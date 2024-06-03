@@ -3,7 +3,12 @@ import { Tooltip } from "react-tooltip";
 
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Badge } from "@mui/material";
+import { useContext } from "react";
+import { AuthContext } from "../AuthHere/AuthProvider";
 const Nav = () => {
+  const {logout,person} = useContext(AuthContext)
+  console.log(person)
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -52,9 +57,11 @@ const Nav = () => {
           <li className="text-xl font-[600]">
             <Link to={"/memberShip"}>MamberShip</Link>
           </li>
-          <li className="text-xl font-[600]">
-            <Link to={"/login"}>Join Us</Link>
-          </li>
+         {
+          !person ?  <li className="text-xl font-[600]">
+          <Link to={"/login"}>Join Us</Link>
+        </li> : ''
+         }
 
           <li className="text-[20px]">
             <Link to={"/"}>
@@ -79,12 +86,14 @@ const Nav = () => {
           </Link>
           <br />
           <Link>
-            <button>DashBord</button>
+            <button className="mt-2">DashBord</button>
           </Link>
           <br />
-          <Link>
-            <button>Log Out</button>
-          </Link>
+          {
+            person ? <Link>
+            <button className="mt-2" onClick={logout}>Log Out</button>
+          </Link> : ''
+          }
         </Tooltip>
         <div></div>
       </div>

@@ -1,10 +1,20 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
+import { AuthContext } from "./AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
+
+
+// https://api.imgbb.com/1/upload
+
 
 const Registration = () => {
+  const { emailPassword, logout, updateUserData } = useContext(AuthContext);
+
+
   const [cng, setCng] = useState(false);
+  const navigate = useNavigate();
   function handleChange() {
     setCng(!cng);
   }
@@ -12,24 +22,45 @@ const Registration = () => {
   const {
     register,
     handleSubmit,
-    watch,
+
     formState: { errors },
-  } = useForm()
-  const onSubmit = (data) => console.log(data.email)
+  } = useForm();
+  const onSubmit = async (data) => {
+    console.log(data.email, data.password, data.name, data.image);
+   
+
+    emailPassword(data.email, data.password)
+      .then((result) => {
+        console.log(result, "from reg");
+        toast.success("Registration Successfully Done!");
+        logout().then(() => {
+          navigate("/login");
+        });
+      })
+      .catch();
+  };
   return (
-    <div className="w-full md:w-[80%] lg:w-[80%] m-auto md:border lg:border mt-10 p-5">
+    <div className="w-full md:w-[80%] lg:w-[80%] m-auto  mt-2 p-5">
       <h1 className="text-center text-[40px] font-[700]">Register Now!</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="form m-auto">
         {/*  */}
+        <Toaster />
         <div className="flex-column">
           <label>User Name </label>
         </div>
         <div className="inputForm">
           <CiUser className="font-[700]"></CiUser>
 
-          <input type="text" {...register("name", { required: true })}  className="input" placeholder="Your Name" />
+          <input
+            type="text"
+            {...register("name", { required: true })}
+            className="input"
+            placeholder="Your Name"
+          />
         </div>
-        {errors.name && <span className="text-red-600">This field is required</span>}
+        {errors.name && (
+          <span className="text-red-600">This field is required</span>
+        )}
         {/*  */}
         <div className="flex-column">
           <label>Email </label>
@@ -46,20 +77,27 @@ const Registration = () => {
             </g>
           </svg>
 
-          <input type="text" {...register("email", { required: true })}  className="input" placeholder="Enter your Email" />
-        </div>
-          {errors.email && <span className="text-red-600">This field is required</span>}
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            <span className="label-text font-[600] text-[16px]">Image</span>
-          </div>
           <input
-            type="file"
-            className="file-input file-input-bordered w-full max-w-xs"
-            {...register("image", { required: true })} 
+            type="text"
+            {...register("email", { required: true })}
+            className="input"
+            placeholder="Enter your Email"
           />
+        </div>
+        {errors.email && (
+          <span className="text-red-600">This field is required</span>
+        )}
+        <label >Photo URL</label>
+       <div  className="inputForm">
+       <label className=" flex items-center gap-2">
+         URL
+          <input type="text" {...register("image", { required: true })} className="input" placeholder="Your Photo URL" />
         </label>
-          {errors.image && <span className="text-red-500">This field is required</span>}
+       </div>
+
+        {errors.image && (
+          <span className="text-red-500">This field is required</span>
+        )}
 
         <div className="flex-column">
           <label>Password </label>
@@ -79,9 +117,9 @@ const Registration = () => {
             type={cng ? "text" : "password"}
             className="input"
             placeholder="Enter your Password"
-            {...register("password", { required: true ,  minLength: 6 })}
+            {...register("password", { required: true, minLength: 6 })}
           />
-          
+
           <svg
             viewBox="0 0 576 512"
             onClick={handleChange}
@@ -91,8 +129,12 @@ const Registration = () => {
             <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" />
           </svg>
         </div>
-        {errors.password && <span className="text-red-500">This field is require and give upto 6 keywords.</span>}
-       
+        {errors.password && (
+          <span className="text-red-500">
+            This field is require and give upto 6 keywords.
+          </span>
+        )}
+
         <div className="flex-row">
           <div>
             <input type="checkbox" />
