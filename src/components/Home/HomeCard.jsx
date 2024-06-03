@@ -1,34 +1,25 @@
 
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../useAxiosPublic";
 import { Link } from "react-router-dom";
 
 
-const HomeCard = () => {
-    const axiosPublic = useAxiosPublic()
-    const {  data: postsData = [] , isLoading} = useQuery({
-        queryKey: ['posts'],
-        queryFn: async () => {
-            const response = await axiosPublic.get("/posts");
-            console.log(response.data,'knhi')
-            return response.data;  
-        }
-    });
+
+const HomeCard = ({postsData,isLoading,handleSortPopularity,asc}) => {
     
-    console.log(postsData);
 
 
     return (
         <div className="mt-5">
 
-            <h1 className="text-[50px] text-center font-[700] text-[#1976D2]">Our All Posts</h1>
+            <h1 className="text-[50px] text-center font-[700] ">Our All Posts</h1>
             <hr className="w-[300px] m-auto border-[3px]"/>
 
-            {
+            
+        <div><button onClick={handleSortPopularity} className="btn btn-wide">{asc ? 'asc': "dsc "} Popularity</button></div>
+           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:p-20 lg:p-20 gap-5">
+           {
                 isLoading && <p className="text-[100px] text-center">LOading</p>
             }
 
-           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:p-20 mt-1 lg:p-20 gap-5">
            {
                 postsData.map(x => <Link key={x._id} to={`/homeCardDetails/${x._id}`}>
                 <div  className="max-w-md hover:bg-[#1976D2]  rounded-xl hover:text-white p-8 sm:flex sm:space-x-6 border text-black">
