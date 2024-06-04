@@ -42,9 +42,7 @@ const Nav = () => {
             <li>
               <Link to={"/memberShip"}>MamberShip</Link>
             </li>
-            <li>
-              <Link to={"/"}>IoNotifications</Link>
-            </li>
+            
           </ul>
         </div>
         <a className="font-[700] text-4xl">RAWFOB</a>
@@ -85,7 +83,7 @@ const Nav = () => {
             <button>Name</button>
           </Link>
           <br />
-          <Link>
+          <Link to={"dashbord"}>
             <button className="mt-2">DashBord</button>
           </Link>
           <br />
