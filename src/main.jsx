@@ -15,6 +15,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HomeCardDetails from "./components/Home/HomeCardDetails";
 import { Theme } from "@radix-ui/themes/dist/cjs/index.js";
 import MainDashbord from "./components/Dashbord/MainDashbord";
+import UserProfile from "./components/Dashbord/UserProfile/UserProfile";
+import MyPosts from "./components/Dashbord/UserProfile/MyPosts";
+import AddPost from "./components/Dashbord/UserProfile/AddPost";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -42,7 +45,21 @@ const router = createBrowserRouter([
   },
   {
     path : "dashbord",
-    element: <MainDashbord></MainDashbord>
+    element: <MainDashbord></MainDashbord>,
+    children : [
+      {
+        path : 'userProfile',
+        element: <UserProfile></UserProfile>
+      },
+      {
+        path : 'myPosts',
+        element: <MyPosts></MyPosts>
+      },
+      {
+        path : 'addPosts',
+        element: <AddPost></AddPost>
+      },
+    ]
   }
 ]);
 

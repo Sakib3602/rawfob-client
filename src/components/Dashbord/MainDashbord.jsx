@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const MainDashbord = () => {
   return (
     <div className="w-[85%] m-auto  flex">
 
 
-      <div className=" w-[30%] h-[500px] ">
-        <div className="drawer">
+      <div className="w-[15%] lg:w-[30%] h-[500px] fixed  lg:relative">
+        <div className="drawer ">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
-            <div className="w-full  lg:min-h-screen bg-base-300">
-              <div className="flex-none lg:hidden">
+            <div className="w-full rounded-t-badge rounded-b-badge lg:min-h-screen lg:bg-[#1976D2] text-black lg:text-white">
+              <div className="flex-none lg:hidden ">
                 <label
                   htmlFor="my-drawer-3"
                   aria-label="open sidebar"
@@ -34,16 +34,22 @@ const MainDashbord = () => {
               </div>
               {/* <div className="flex-1 px-2 mx-2">Navbar Title</div> */}
               <div className="flex-none hidden lg:block">
-                <ul className="menu menu-vertical">
+                <h1 className="text-[60px] font-[700] text-center mt-10">DashBord</h1>
+                <div className="divider"></div>
+                <ul className="menu menu-vertical space-y-4">
                   {/* Navbar menu content here */}
                   <li>
-                   <Link to={'userProfile'}><a>My Profile</a></Link>
+                   <Link to={'userProfile'}><a className="text-[25px]  font-[500]">My Profile</a></Link>
                   </li>
                   <li>
-                   <Link to={'addPosts'}><a>Add Posts</a></Link>
+                   <Link to={'addPosts'}><a className="text-[25px]  font-[500]">Add Posts</a></Link>
                   </li>
                   <li>
-                   <Link to={'myPosts'}><a>My Posts</a></Link>
+                   <Link to={'myPosts'}><a className="text-[25px]  font-[500]">My Posts</a></Link>
+                  </li>
+                  <div className="divider">OR</div>
+                  <li>
+                   <Link to={'/'}><a className="text-[25px]  font-[500]">Home</a></Link>
                   </li>
                   
                 </ul>
@@ -61,18 +67,25 @@ const MainDashbord = () => {
             <ul className="menu p-4 w-80 min-h-screen bg-base-200">
               {/* Sidebar content here */}
               <li>
-                <a>Sidebar Item 3</a>
-              </li>
-              <li>
-                <a>Sidebar Item 2</a>
-              </li>
+                   <Link to={'userProfile'}><a className="text-[25px]  font-[500]">My Profile</a></Link>
+                  </li>
+                  <li>
+                   <Link to={'addPosts'}><a className="text-[25px]  font-[500]">Add Posts</a></Link>
+                  </li>
+                  <li>
+                   <Link to={'myPosts'}><a className="text-[25px]  font-[500]">My Posts</a></Link>
+                  </li>
+                  <div className="divider">OR</div>
+                  <li>
+                   <Link to={'/'}><a className="text-[25px]  font-[500]">Home</a></Link>
+                  </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div>
-        content1
+      <div className="p-8 flex-1 border mt-14 lg:mt-0">
+        <Outlet></Outlet>
       </div>
     </div>
   );
