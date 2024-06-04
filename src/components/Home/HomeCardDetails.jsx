@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../AuthHere/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { FacebookIcon, FacebookShareButton, FacebookShareCount } from "react-share";
 
 const HomeCardDetails = () => {
   const {
@@ -29,6 +30,8 @@ const HomeCardDetails = () => {
     },
   });
 
+  console.log(postsData,"postData")
+
   const onSubmit = (data) => {
     if (!person) {
       return toast.success("Please Log In first !");
@@ -50,7 +53,7 @@ const HomeCardDetails = () => {
   
   function voteHandle(){
     if(up){
-      toast.success("You can Up Vote Once")
+      toast.success("You can vote Once !")
     }
     else{
       setVote(true)
@@ -64,11 +67,13 @@ const HomeCardDetails = () => {
   console.log(vote)
   function downHandle(){
     if(up){
-      toast.success("Sorry ! ")
+      toast.success("You can vote Once ! ")
     }
     else{
       mutationUp.mutate();
       setVote(false)
+      toast.success("Vote Done!");
+      setUp(true)
      
     }
     
@@ -85,7 +90,7 @@ const HomeCardDetails = () => {
     mutationFn: updateDoc,
 
     onSuccess: () => {
-      toast.success("Comment Successfull!");
+      // toast.success("Vote Done!");
       refetch()
     },
   })
@@ -129,9 +134,7 @@ const HomeCardDetails = () => {
             </p>
             <p className="py-2">upVote : {postsData.upvote}</p>
             <p className="py-2">DownVote : {postsData.downvote}</p>
-            <p className="py-2">
-              Popularity : {new Date(postsData.post_time).toLocaleDateString()}
-            </p>
+        
             <div className="flex flex-col space-x-5  lg:flex-row">
               <button onClick={voteHandle} className="btn w-full bg-[#1976D2]  shadow-xl hover:bg-[#1976D2] text-white lg:max-w-[150px]">
                 Up Vote
@@ -188,9 +191,19 @@ const HomeCardDetails = () => {
 
               {/* Put this part before </body> tag */}
 
+              {/* <button className="btn w-full border-b-[#1976D2]  shadow-xl hover:bg-[#1976D2] hover:text-white lg:max-w-[150px]">
+                Shere Now
+              </button> */}
+              {/*  */}
+              <FacebookShareButton url={`http://localhost:5173/homeCardDetails/${params.id}`}>
               <button className="btn w-full border-b-[#1976D2]  shadow-xl hover:bg-[#1976D2] hover:text-white lg:max-w-[150px]">
                 Shere Now
               </button>
+      </FacebookShareButton>
+      <FacebookShareCount url={`http://localhost:5173/homeCardDetails/${params.id}`}>
+        {(shareCount) => <span className="myShareCountWrapper">{shareCount || 0}</span>}
+      </FacebookShareCount>
+              {/*  */}
             </div>
           </div>
         </div>

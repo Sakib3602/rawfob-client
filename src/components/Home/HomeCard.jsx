@@ -42,7 +42,7 @@ const HomeCard = ({postsData,isLoading,handleSortPopularity,asc}) => {
                         </span> */}
                         <span className="flex items-center space-x-2">
                             
-                            <span className="text-gray-400 hover:text-white">Popularity : {200}</span>
+                            <span className="text-gray-400 hover:text-white">Popularity : {x.popularity}</span>
                         </span>
                     </div>
                 </div>
