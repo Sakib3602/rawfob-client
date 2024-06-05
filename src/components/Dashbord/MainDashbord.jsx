@@ -1,7 +1,10 @@
+
 import { Link, Outlet } from "react-router-dom";
 
+
 const MainDashbord = () => {
-  return (
+  
+   return (
     <div className="w-[85%] m-auto  flex">
 
 
@@ -39,7 +42,7 @@ const MainDashbord = () => {
                 <ul className="menu menu-vertical space-y-4">
                   {/* Navbar menu content here */}
                   <li>
-                   <Link to={'userProfile'}><a className="text-[25px]  font-[500]">My Profile</a></Link>
+                   <Link to={''}><a className="text-[25px]  font-[500]">My Profile</a></Link>
                   </li>
                   <li>
                    <Link to={'addPosts'}><a className="text-[25px]  font-[500]">Add Posts</a></Link>

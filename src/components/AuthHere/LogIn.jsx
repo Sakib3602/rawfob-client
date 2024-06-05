@@ -50,7 +50,7 @@ const LogIn = () => {
           email : result.user.email,
           image : result.user.photoUrl,
           role: "guest",
-          mamberShip : "no",
+          mamberShip : "Bronze",
 
 
         }

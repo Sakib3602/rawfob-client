@@ -47,7 +47,7 @@ const Registration = () => {
               email : data.email,
               image : data.image,
               role: "guest",
-              mamberShip : "no",
+              mamberShip : "Bronze",
 
 
             }
