@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../../AuthHere/AuthProvider";
 import useAxiosPublic from "../../../useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import Loader from "../../Loader";
+import toast, { Toaster } from "react-hot-toast";
 
 const MyPosts = () => {
   const { person } = useContext(AuthContext);
-  console.log(person.email)
+ 
+ 
 
   const axiosPublic = useAxiosPublic();
 
@@ -24,7 +26,28 @@ const MyPosts = () => {
     queryFn: getPostData,
   });
 
-  console.log(tableData, "table data");
+//   for delete
+const mutationDlt = useMutation({
+    mutationFn : async(id)=>{
+        const res = await axiosPublic.delete(`/posts/${id}`)
+        return res.data;
+    },
+    onSuccess : ()=>{
+        refetch()
+        toast.success("Post Done Perfectly.")
+    }
+})
+
+function handleDelete(id){
+    console.log(id)
+    mutationDlt.mutate(id)
+
+}
+
+
+
+
+
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -36,6 +59,7 @@ const MyPosts = () => {
         <table className="table">
           {/* head */}
           <thead>
+          <Toaster />
             <tr>
               <th></th>
               <th>Title</th>
@@ -49,16 +73,19 @@ const MyPosts = () => {
             {/* row 1 */}
 
             {
-                tableData.map(table =>  <tr key={table._id} className="hover">
-                <th>1</th>
-                <td>Quality Control Specialist</td>
-                <td>20</td>
-                <td>30</td>
+                tableData.map((table,i) =>  <tr key={table._id} className="hover">
+                <th>{i+1}</th>
+                <td>{table.post_title}</td>
+                <td>{table?.upvote}</td>
+                <td>{table?.downvote}</td>
+                
                 <td>
                   <button className="btn btn-xs btn-outline">Comments</button>
                 </td>
                 <td>
-                  <button className="btn btn-circle btn-outline">
+                  <button onClick={()=>handleDelete(table?._id)} className="btn btn-circle btn-outline">
+                   
+                 
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6"

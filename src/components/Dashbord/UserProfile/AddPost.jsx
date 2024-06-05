@@ -3,9 +3,11 @@ import { AuthContext } from "../../AuthHere/AuthProvider";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosPublic from "../../../useAxiosPublic";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddPost = () => {
   const { person } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   function handleClick(e) {
     e.preventDefault(); // Prevent default form submission behavior
@@ -44,6 +46,8 @@ const AddPost = () => {
     mutationFn : postPersonalPost,
     onSuccess: ()=>{
       toast.success("Post Done Perfectly.")
+      navigate("/dashbord/myPosts")
+  
     }
       
   })
