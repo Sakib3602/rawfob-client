@@ -21,7 +21,7 @@ const HomeCard = ({postsData,isLoading,handleSortPopularity,asc}) => {
             }
 
            {
-                postsData.map(x => <Link key={x._id} to={`/homeCardDetails/${x._id}`}>
+                postsData?.map(x => <Link key={x._id} to={`/homeCardDetails/${x._id}`}>
                 <div  className="max-w-md hover:bg-[#1976D2]  rounded-xl hover:text-white p-8 sm:flex sm:space-x-6 border text-black">
                 <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
                     <img src="https://source.unsplash.com/100x100/?portrait?1" alt="" className="object-cover object-center w-full h-full rounded bg-gray-500" />
@@ -36,10 +36,7 @@ const HomeCard = ({postsData,isLoading,handleSortPopularity,asc}) => {
                           
                             <span className="text-black font-[600] text-xl">{x.post_title}</span>
                         </span>
-                        {/* <span className="flex items-center space-x-2">
-                            
-                            <span className="text-gray-400">{x.post_description}</span>
-                        </span> */}
+                       
                         <span className="flex items-center space-x-2">
                             
                             <span className="text-gray-400 hover:text-white">Popularity : {x.popularity}</span>

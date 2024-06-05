@@ -1,13 +1,17 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import useAxiosPublic from "../../useAxiosPublic";
+import { useMutation } from "@tanstack/react-query";
 
 const LogIn = () => {
+  const axiosPublic = useAxiosPublic()
     const  [cng, setCng] = useState(false)
-    const { emailPasswordSignUp} = useContext(AuthContext)
+    const { emailPasswordSignUp, googleText} = useContext(AuthContext)
+    const navigate = useNavigate()
     function handleChange(){
       setCng(!cng)
     }
@@ -22,6 +26,8 @@ const LogIn = () => {
 
       emailPasswordSignUp(data.email,data.password)
       .then(()=>{
+     
+        navigate('/')
         toast.success("Log In Successfully !")
 
       })
@@ -29,6 +35,42 @@ const LogIn = () => {
       
   
     }
+
+
+    
+
+
+    // 
+    function handleGoogle(){
+      googleText()
+      .then((result)=>{
+        console.log("result" , result.user.email)
+        const userPostDataForDb = {
+          name : result.user.displayName,
+          email : result.user.email,
+          image : result.user.photoUrl,
+          role: "guest",
+          mamberShip : "no",
+
+
+        }
+        mutationUp.mutate(userPostDataForDb)
+
+      })
+    }
+
+    // 
+    const gg = async(userPostDataForDb)=>{
+      const res = await axiosPublic.post("/userData",userPostDataForDb)
+      return res.data
+    }
+    const mutationUp = useMutation({
+      mutationFn : gg,
+      onSuccess: ()=>{
+        navigate('/')
+        toast.success("Log In Successfully !")
+      }
+    })
 
    
   return (
@@ -104,7 +146,7 @@ const LogIn = () => {
       </p>
       <p className="p line">Or With</p>
       <div className="flex-row">
-        <button className="btn google">
+        <button onClick={handleGoogle} className="btn google">
           <svg
             version="1.1"
             width={20}

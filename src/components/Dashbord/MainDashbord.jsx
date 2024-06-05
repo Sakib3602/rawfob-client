@@ -10,7 +10,7 @@ const MainDashbord = () => {
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
-            <div className="w-full rounded-t-badge rounded-b-badge lg:min-h-screen lg:bg-[#1976D2] text-black lg:text-white">
+            <div className="w-full  lg:min-h-screen lg:bg-[#1976D2] text-black lg:text-white">
               <div className="flex-none lg:hidden ">
                 <label
                   htmlFor="my-drawer-3"
@@ -84,7 +84,7 @@ const MainDashbord = () => {
         </div>
       </div>
 
-      <div className="p-8 flex-1 border mt-14 lg:mt-0">
+      <div className="px-8 flex-1 mt-14 lg:mt-0">
         <Outlet></Outlet>
       </div>
     </div>

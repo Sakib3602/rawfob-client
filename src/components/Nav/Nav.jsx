@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
+import imageblack from '../../assets/blackandwhite.png'
 
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Badge } from "@mui/material";
@@ -7,7 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthHere/AuthProvider";
 const Nav = () => {
   const {logout,person} = useContext(AuthContext)
-  console.log(person)
+  console.log(person.photoUrl)
 
   return (
     <div className="navbar bg-base-100">
@@ -75,12 +76,12 @@ const Nav = () => {
           <img
             className="rounded-full"
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            src={person?.photoUrl ? person?.photoUrl : imageblack}
           />
         </div>
         <Tooltip anchorSelect="#clickable" clickable>
           <Link>
-            <button>Name</button>
+            <button className="font-[600]">{person?.displayName }</button>
           </Link>
           <br />
           <Link to={"dashbord"}>

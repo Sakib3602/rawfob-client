@@ -4,9 +4,14 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+
+import { GoogleAuthProvider } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
 
 export const AuthContext = createContext(null);
 
@@ -28,6 +33,11 @@ const AuthProvider = ({ children }) => {
       photoURL: image,
     });
   };
+
+  // google
+  const googleText = ()=>{
+    return signInWithPopup(auth, provider)
+  }
 
   // logout
   function logout() {
@@ -55,6 +65,7 @@ const AuthProvider = ({ children }) => {
     logout,
     updateUserData,
     person,
+    googleText,
   };
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };

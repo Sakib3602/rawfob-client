@@ -4,14 +4,16 @@ import { CiUser } from "react-icons/ci";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "./AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import useAxiosPublic from "../../useAxiosPublic";
+import { useMutation } from "@tanstack/react-query";
 
 
 // https://api.imgbb.com/1/upload
 
 
 const Registration = () => {
-  const { emailPassword, logout, updateUserData } = useContext(AuthContext);
-
+  const { emailPassword, logout, updateUserData , } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
 
   const [cng, setCng] = useState(false);
   const navigate = useNavigate();
@@ -32,13 +34,63 @@ const Registration = () => {
     emailPassword(data.email, data.password)
       .then((result) => {
         console.log(result, "from reg");
-        toast.success("Registration Successfully Done!");
-        logout().then(() => {
-          navigate("/login");
-        });
+        // toast.success("Registration Successfully Done!");
+        updateUserData(data.name,data.image)
+        .then(()=>{
+          logout()
+          .then(() => {
+            
+
+
+            const userPostDataForDb = {
+              name : data.name,
+              email : data.email,
+              image : data.image,
+              role: "guest",
+              mamberShip : "no",
+
+
+            }
+            mutationUp.mutate(userPostDataForDb);
+
+
+          });
+
+        })
+        
       })
       .catch();
   };
+
+  // handle google
+ 
+  // post user data to db
+
+  const userData = async(userPostDataForDb)=>{
+    const res = await axiosPublic.post('/userData', userPostDataForDb)
+    return res.data
+
+  }
+
+  const mutationUp = useMutation({
+    mutationFn: userData,
+    onSuccess : ()=>{
+      toast.success("Registration Successfully Done!");
+      navigate("/login");
+    }
+  })
+
+
+  // post user data to db end
+
+
+
+
+
+
+
+
+
   return (
     <div className="w-full md:w-[80%] lg:w-[80%] m-auto  mt-2 p-5">
       <h1 className="text-center text-[40px] font-[700]">Register Now!</h1>
