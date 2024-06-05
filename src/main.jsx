@@ -18,6 +18,7 @@ import MainDashbord from "./components/Dashbord/MainDashbord";
 import UserProfile from "./components/Dashbord/UserProfile/UserProfile";
 import MyPosts from "./components/Dashbord/UserProfile/MyPosts";
 import AddPost from "./components/Dashbord/UserProfile/AddPost";
+import PrivateRoute from "./components/AuthHere/PrivateRoute";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -45,7 +46,10 @@ const router = createBrowserRouter([
   },
   {
     path : "dashbord",
-    element: <MainDashbord></MainDashbord>,
+    element: <PrivateRoute>
+      <MainDashbord></MainDashbord>
+
+    </PrivateRoute> ,
     children : [
       {
         index: true,

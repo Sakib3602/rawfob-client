@@ -17,17 +17,21 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [person,setPerson] = useState('')
+  const [loading,setLoading] = useState(true)
  
 
   const emailPassword = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const emailPasswordSignUp = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // update profile
   const updateUserData = (name, image) => {
+    setLoading(true)
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
@@ -36,11 +40,13 @@ const AuthProvider = ({ children }) => {
 
   // google
   const googleText = ()=>{
+    setLoading(true)
     return signInWithPopup(auth, provider)
   }
 
   // logout
   function logout() {
+    setLoading(true)
     return signOut(auth);
   }
 
@@ -48,9 +54,11 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const DeleteIt = onAuthStateChanged(auth, (user) => {
       if (user) {
+        
         console.log("on auth", user);
         setPerson(user)
       }
+      setLoading(false)
     });
 
     return () => {
@@ -66,6 +74,7 @@ const AuthProvider = ({ children }) => {
     updateUserData,
     person,
     googleText,
+    loading,
   };
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };

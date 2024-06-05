@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthHere/AuthProvider";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosPublic from "../../../useAxiosPublic";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddPost = () => {
   const { person } = useContext(AuthContext);
@@ -73,6 +73,7 @@ const AddPost = () => {
               name="email"
               value={person.email}
             />
+             <Toaster />
             <span className="p-2 font-[600]">Post Title</span>
             <input
               placeholder="Post Title"

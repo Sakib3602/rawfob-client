@@ -54,6 +54,10 @@ const MainDashbord = () => {
                   <li>
                    <Link to={'/'}><a className="text-[25px]  font-[500]">Home</a></Link>
                   </li>
+                  <div className="divider">OR</div>
+                  {/* <li>
+                   <Link to={}><a className="text-[25px]  font-[500]">My Posts</a></Link>
+                  </li> */}
                   
                 </ul>
               </div>
