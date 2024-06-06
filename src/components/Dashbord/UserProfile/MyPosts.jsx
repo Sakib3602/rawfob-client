@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../useAxiosPublic";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import Loader from "../../Loader";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const MyPosts = () => {
   const { person } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const mutationDlt = useMutation({
     },
     onSuccess : ()=>{
         refetch()
-        toast.success("Post Done Perfectly.")
+        toast.success("Post Deleted.")
     }
 })
 
@@ -80,7 +81,7 @@ function handleDelete(id){
                 <td>{table?.downvote}</td>
                 
                 <td>
-                  <button className="btn btn-xs btn-outline">Comments</button>
+                  <Link to={`comments/${table.post_title}`}><button className="btn btn-xs btn-outline">Comments</button></Link>
                 </td>
                 <td>
                   <button onClick={()=>handleDelete(table?._id)} className="btn btn-circle btn-outline">

@@ -19,6 +19,7 @@ import UserProfile from "./components/Dashbord/UserProfile/UserProfile";
 import MyPosts from "./components/Dashbord/UserProfile/MyPosts";
 import AddPost from "./components/Dashbord/UserProfile/AddPost";
 import PrivateRoute from "./components/AuthHere/PrivateRoute";
+import Comments from "./components/Dashbord/UserProfile/Comments";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path : 'addPosts',
         element: <AddPost></AddPost>
+      },
+      {
+        path : 'myPosts/comments/:title',
+        element: <Comments></Comments>
       },
     ]
   }
