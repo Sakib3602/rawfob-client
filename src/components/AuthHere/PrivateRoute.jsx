@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import Loader from "../Loader";
 
 
 const PrivateRoute = ({children}) => {
@@ -8,7 +9,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
   
     if(loading) {
-      return <span className="loading loading-infinity loading-lg pt-32"></span>
+      return <Loader></Loader>
       }
   
     if (person) {

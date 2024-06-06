@@ -44,6 +44,7 @@ const HomeCardDetails = () => {
       email: person.email,
       comment: data.comment,
       title: postsData.post_title,
+      report: []
     };
     console.log(commentDetail, "comment");
 
