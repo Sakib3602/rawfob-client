@@ -1,21 +1,15 @@
-
 import { Link, Outlet } from "react-router-dom";
 import UserDataRole from "../Hooks/UserDataRole";
 
 const MainDashbord = () => {
-  const [data , isloading] = UserDataRole()
+  const [data, isloading] = UserDataRole();
 
-
-  if(data?.role){
-    console.log(data?.role,"role")
-
+  if (data?.role) {
+    console.log(data?.role, "role");
   }
 
-  
-   return (
+  return (
     <div className="w-[85%] m-auto   flex">
-
-
       <div className="w-[15%] lg:w-[30%] h-[500px] fixed  lg:relative">
         <div className="drawer ">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -45,65 +39,103 @@ const MainDashbord = () => {
               </div>
               {/* <div className="flex-1 px-2 mx-2">Navbar Title</div> */}
               <div className="flex-none hidden lg:block">
-                <h1 className="text-[60px] font-[700] text-center mt-10">DashBord</h1>
+                <h1 className="text-[60px] font-[700] text-center mt-10">
+                  DashBord
+                </h1>
                 <div className="divider"></div>
                 <ul className="menu menu-vertical space-y-4">
                   {/* Navbar menu content here */}
-                  {
-                    data?.role === 'guest' ? <li>
-                    <Link to={''}><a className="text-[25px] uppercase  font-[500]">My Profile</a></Link>
-                   </li> : ''
-                  }
-                  {
-                    data?.role === 'admin' ? <li>
-                    <Link to={'admin'}><a className="text-[25px] uppercase  font-[500]">Admin Profile</a></Link>
-                   </li> : ''
-                  }
+                  {data?.role === "guest" ? (
+                    <li>
+                      <Link to={""}>
+                        <a className="text-[25px] uppercase  font-[500]">
+                          My Profile
+                        </a>
+                      </Link>
+                    </li>
+                  ) : (
+                    ""
+                  )}
+                  {data?.role === "admin" ? (
+                    <li>
+                      <Link to={"admin"}>
+                        <a className="text-[25px] uppercase  font-[500]">
+                          Admin Profile
+                        </a>
+                      </Link>
+                    </li>
+                  ) : (
+                    ""
+                  )}
 
-                  {
-                    data?.role === "guest" ? <li>
-                    <Link to={'addPosts'}><a className="text-[25px] uppercase  font-[500]">Add Posts</a></Link>
-                   </li> : ''
-                  }
-                  {
-                    data?.role === "admin" ? <li>
-                    <Link to={'ann'}><a className="text-[25px] uppercase  font-[500]">Make Announcement</a></Link>
-                   </li> : ''
-                  }
-                  {
-                    data?.role === "guest" ? <li>
-                    <Link to={'myPosts'}><a className="text-[25px] uppercase  font-[500]">My Posts</a></Link>
-                   </li> : '' 
-                  }
-                  {
-                    data?.role === "admin" ? <li>
-                    <Link to={'allann'}><a className="text-[25px] uppercase  font-[500]">All Announcement</a></Link>
-                   </li> : '' 
-                  }
-                  {
-                    data?.role === "admin" ? <li>
-                    <Link to={'report'}><a className="text-[25px] uppercase  font-[500]">reports</a></Link>
-                   </li> : '' 
-                  }
-                 
-                  
-                  
-                 
-                  
+                  {data?.role === "guest" ? (
+                    <li>
+                      <Link to={"addPosts"}>
+                        <a className="text-[25px] uppercase  font-[500]">
+                          Add Posts
+                        </a>
+                      </Link>
+                    </li>
+                  ) : (
+                    ""
+                  )}
+                  {data?.role === "admin" ? (
+                    <li>
+                      <Link to={"ann"}>
+                        <a className="text-[25px] uppercase  font-[500]">
+                          Make Announcement
+                        </a>
+                      </Link>
+                    </li>
+                  ) : (
+                    ""
+                  )}
+                  {data?.role === "guest" ? (
+                    <li>
+                      <Link to={"myPosts"}>
+                        <a className="text-[25px] uppercase  font-[500]">
+                          My Posts
+                        </a>
+                      </Link>
+                    </li>
+                  ) : (
+                    ""
+                  )}
+                  {data?.role === "admin" ? (
+                    <li>
+                      <Link to={"allann"}>
+                        <a className="text-[25px] uppercase  font-[500]">
+                          All Announcement
+                        </a>
+                      </Link>
+                    </li>
+                  ) : (
+                    ""
+                  )}
+                  {data?.role === "admin" ? (
+                    <li>
+                      <Link to={"report"}>
+                        <a className="text-[25px] uppercase  font-[500]">
+                          reports
+                        </a>
+                      </Link>
+                    </li>
+                  ) : (
+                    ""
+                  )}
+
                   <div className="divider">OR</div>
                   <li>
-                   <Link to={'/'}><a className="text-[25px]  font-[500]">Home</a></Link>
+                    <Link to={"/"}>
+                      <a className="text-[25px]  font-[500]">Home</a>
+                    </Link>
                   </li>
-                  <div className="divider">OR</div>
-                  {/* <li>
-                   <Link to={}><a className="text-[25px]  font-[500]">My Posts</a></Link>
-                  </li> */}
-                  
+                 
+                 
                 </ul>
               </div>
             </div>
             {/* Page content here */}
-            
           </div>
           <div className="drawer-side">
             <label
@@ -114,18 +146,26 @@ const MainDashbord = () => {
             <ul className="menu p-4 w-80 min-h-screen bg-base-200">
               {/* Sidebar content here */}
               <li>
-                   <Link to={'userProfile'}><a className="text-[25px]  font-[500]">My Profile</a></Link>
-                  </li>
-                  <li>
-                   <Link to={'addPosts'}><a className="text-[25px]  font-[500]">Add Posts</a></Link>
-                  </li>
-                  <li>
-                   <Link to={'myPosts'}><a className="text-[25px]  font-[500]">My Posts</a></Link>
-                  </li>
-                  <div className="divider">OR</div>
-                  <li>
-                   <Link to={'/'}><a className="text-[25px]  font-[500]">Home</a></Link>
-                  </li>
+                <Link to={"userProfile"}>
+                  <a className="text-[25px]  font-[500]">My Profile</a>
+                </Link>
+              </li>
+              <li>
+                <Link to={"addPosts"}>
+                  <a className="text-[25px]  font-[500]">Add Posts</a>
+                </Link>
+              </li>
+              <li>
+                <Link to={"myPosts"}>
+                  <a className="text-[25px]  font-[500]">My Posts</a>
+                </Link>
+              </li>
+              <div className="divider">OR</div>
+              <li>
+                <Link to={"/"}>
+                  <a className="text-[25px]  font-[500]">Home</a>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

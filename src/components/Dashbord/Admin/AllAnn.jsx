@@ -1,15 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import UserDataRole from "../../Hooks/UserDataRole";
+import { useMutation, useQuery } from "@tanstack/react-query";
+// import UserDataRole from "../../Hooks/UserDataRole";
 
 import useAxiosSecure from "../../../../useAxiosSecure";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const AllAnn = () => {
-  const [data, isloading] = UserDataRole();
+  // const [data, isloading] = UserDataRole();
   const axiosSecure = useAxiosSecure();
   const [selectedId , setSelectedId] = useState('')
 
-  const { data: anounceData = [], refatch } = useQuery({
+  const { data: anounceData = [], refetch } = useQuery({
     queryKey: ["anouncementData"],
     queryFn: async () => {
       const res = await axiosSecure.get("/annData");
@@ -18,12 +19,28 @@ const AllAnn = () => {
   });
   console.log(anounceData,"announcementdata");
 
+  const mutatonDlt = useMutation({
+    mutationFn : async(id)=>{
+      const res = await axiosSecure.delete(`/deleteAnn/${id}`,)
+      return res.data;
+    },
+    onSuccess : ()=>{
+      
+      toast.success("Deleted.")
+      refetch()
+     
+    }
+  })
+
+  
+
   return (
     <div>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
+            <Toaster></Toaster>
             <tr>
               <th></th>
               <th>Email</th>
@@ -74,7 +91,7 @@ const AllAnn = () => {
                 </td>
 
                 <td>
-                  <button className="btn btn-outline">Delete</button>
+                  <button onClick={()=>mutatonDlt.mutate(l?._id)} className="btn btn-outline">Delete</button>
                 </td>
               </tr>
             ))}
