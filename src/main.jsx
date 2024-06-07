@@ -24,6 +24,7 @@ import AdminProfile from "./components/Dashbord/Admin/AdminProfile";
 import Announcement from "./components/Dashbord/Admin/Announcement";
 import AllAnn from "./components/Dashbord/Admin/AllAnn";
 import Report from "./components/Dashbord/Admin/Report";
+import MamberShip from "./components/Nav/MamberShip";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LogIn></LogIn>,
+      },
+      {
+        path: "/mambership",
+        element: <MamberShip></MamberShip>,
       },
       {
         path: "/registration",

@@ -52,15 +52,25 @@ const Nav = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li className="">
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link to={"/memberShip"}>MamberShip</Link>
-            </li>
-            <li>
-              <Link to={"/memberShip"}>MamberShip</Link>
-            </li>
+             <li className="text-xl font-[600]">
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li className="text-xl font-[600]">
+            <Link to={"/mambership"}>MamberShip</Link>
+          </li>
+         {
+          !person ?  <li className="text-xl font-[600]">
+          <Link to={"/login"}>Join Us</Link>
+        </li> : ''
+         }
+
+          <li className="text-[20px]">
+            <Link to={"/"}>
+              <Badge badgeContent={totalAll?.totalAnouncement} color="primary">
+                <NotificationsIcon color="action" />
+              </Badge>
+            </Link>
+          </li>
             
           </ul>
         </div>
@@ -72,7 +82,7 @@ const Nav = () => {
             <Link to={"/"}>Home</Link>
           </li>
           <li className="text-xl font-[600]">
-            <Link to={"/memberShip"}>MamberShip</Link>
+            <Link to={"/mambership"}>MamberShip</Link>
           </li>
          {
           !person ?  <li className="text-xl font-[600]">
