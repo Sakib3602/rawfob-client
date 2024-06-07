@@ -3,6 +3,7 @@ import useAxiosPublic from "../../useAxiosPublic";
 import HomeCard from "./HomeCard";
 import SearchBox from "./SearchBox";
 import { useQuery } from "@tanstack/react-query";
+import Announcement from "./Announcement";
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
@@ -45,6 +46,7 @@ const Home = () => {
         postsData={postsData}
         isLoading={isLoading}
       ></HomeCard>
+      <Announcement></Announcement>
     </div>
   );
 };
