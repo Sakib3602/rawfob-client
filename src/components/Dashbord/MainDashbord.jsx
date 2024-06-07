@@ -2,9 +2,14 @@
 import { Link, Outlet } from "react-router-dom";
 import UserDataRole from "../Hooks/UserDataRole";
 
-
 const MainDashbord = () => {
-  const [data] = UserDataRole()
+  const [data , isloading] = UserDataRole()
+
+
+  if(data?.role){
+    console.log(data?.role,"role")
+
+  }
 
   
    return (
@@ -44,22 +49,22 @@ const MainDashbord = () => {
                 <div className="divider"></div>
                 <ul className="menu menu-vertical space-y-4">
                   {/* Navbar menu content here */}
-                  {/* {
-                    data.role === 'guest' ? <li>
+                  {
+                    data?.role === 'guest' ? <li>
                     <Link to={''}><a className="text-[25px] uppercase  font-[500]">My Profile</a></Link>
                    </li> : ''
                   }
                   {
-                    data.role === 'admin' ? <li>
+                    data?.role === 'admin' ? <li>
                     <Link to={'admin'}><a className="text-[25px] uppercase  font-[500]">Admin Profile</a></Link>
                    </li> : ''
-                  } */}
-                  <li>
+                  }
+                  {/* <li>
                     <Link to={''}><a className="text-[25px] uppercase  font-[500]">My Profile</a></Link>
                    </li>
                    <li>
                     <Link to={'admin'}><a className="text-[25px] uppercase  font-[500]">Admin Profile</a></Link>
-                   </li> 
+                   </li>  */}
                   
                   
                   <li>

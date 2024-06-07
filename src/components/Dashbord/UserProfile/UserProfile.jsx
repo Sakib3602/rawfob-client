@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthHere/AuthProvider";
 import imageBlack from "../../../assets/blackandwhite.png";
 import UserDataRole from "../../Hooks/UserDataRole";
+import AdminProfile from "../Admin/AdminProfile";
 
 // import useAxiosPublic from "../../../useAxiosPublic";
 // import { useQuery } from "@tanstack/react-query";
@@ -28,6 +29,10 @@ console.log(data, "sinle data");
 
 if(isLoading){
 	return <p className="text-[50px]">LOading</p>
+}
+
+if(data.role === 'admin'){
+  return <AdminProfile></AdminProfile>
 }
   return (
     <div className="m-auto">
