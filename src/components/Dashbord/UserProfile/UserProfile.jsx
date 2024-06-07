@@ -34,7 +34,7 @@ if(isLoading){
 		
       <div className="flex flex-col space-y-5 max-w-md p-6 border text-black">
         <img
-          src={data?.photoURL ? person?.photoURL : imageBlack}
+          src={person?.photoURL ? person?.photoURL : imageBlack}
           alt=""
           className="flex-shrink-0 object-cover h-64 rounded-sm sm:h-96 bg-gray-500 aspect-square"
         />

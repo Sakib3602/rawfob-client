@@ -1,11 +1,14 @@
 
 import { Link, Outlet } from "react-router-dom";
+import UserDataRole from "../Hooks/UserDataRole";
 
 
 const MainDashbord = () => {
+  const [data] = UserDataRole()
+
   
    return (
-    <div className="w-[85%] m-auto  flex">
+    <div className="w-[85%] m-auto   flex">
 
 
       <div className="w-[15%] lg:w-[30%] h-[500px] fixed  lg:relative">
@@ -13,7 +16,7 @@ const MainDashbord = () => {
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
             {/* Navbar */}
-            <div className="w-full  lg:min-h-screen lg:bg-[#1976D2] text-black lg:text-white">
+            <div className="w-full  lg:min-h-screen lg:bg-black text-black lg:text-white">
               <div className="flex-none lg:hidden ">
                 <label
                   htmlFor="my-drawer-3"
@@ -41,14 +44,29 @@ const MainDashbord = () => {
                 <div className="divider"></div>
                 <ul className="menu menu-vertical space-y-4">
                   {/* Navbar menu content here */}
+                  {/* {
+                    data.role === 'guest' ? <li>
+                    <Link to={''}><a className="text-[25px] uppercase  font-[500]">My Profile</a></Link>
+                   </li> : ''
+                  }
+                  {
+                    data.role === 'admin' ? <li>
+                    <Link to={'admin'}><a className="text-[25px] uppercase  font-[500]">Admin Profile</a></Link>
+                   </li> : ''
+                  } */}
                   <li>
-                   <Link to={''}><a className="text-[25px]  font-[500]">My Profile</a></Link>
+                    <Link to={''}><a className="text-[25px] uppercase  font-[500]">My Profile</a></Link>
+                   </li>
+                   <li>
+                    <Link to={'admin'}><a className="text-[25px] uppercase  font-[500]">Admin Profile</a></Link>
+                   </li> 
+                  
+                  
+                  <li>
+                   <Link to={'addPosts'}><a className="text-[25px] uppercase  font-[500]">Add Posts</a></Link>
                   </li>
                   <li>
-                   <Link to={'addPosts'}><a className="text-[25px]  font-[500]">Add Posts</a></Link>
-                  </li>
-                  <li>
-                   <Link to={'myPosts'}><a className="text-[25px]  font-[500]">My Posts</a></Link>
+                   <Link to={'myPosts'}><a className="text-[25px] uppercase  font-[500]">My Posts</a></Link>
                   </li>
                   <div className="divider">OR</div>
                   <li>
