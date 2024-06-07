@@ -18,7 +18,7 @@ const Announcement = () => {
       if(anounceData.length > 0){
         return (
             <div>
-                <h1 className="text-[60px] text-red-500 text-center border-b-2 font-[700]">Announcement</h1>
+                <h1 className="text-[40px] md:text-[60px] lg:text-[60px] text-red-500 text-center border-b-2 font-[700]">Announcement</h1>
     
                 <div className="mt-10 gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
     

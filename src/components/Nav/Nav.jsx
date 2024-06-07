@@ -74,7 +74,9 @@ const Nav = () => {
             
           </ul>
         </div>
-        <a className="font-[700] text-4xl">RAWFOB</a>
+
+        <Link to={"/"}> <a className="font-[700] text-4xl cursor-pointer">RAWFOB</a></Link>
+       
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
