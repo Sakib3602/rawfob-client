@@ -1,0 +1,88 @@
+import { useQuery } from "@tanstack/react-query";
+import UserDataRole from "../../Hooks/UserDataRole";
+
+import useAxiosSecure from "../../../../useAxiosSecure";
+import { useState } from "react";
+
+const AllAnn = () => {
+  const [data, isloading] = UserDataRole();
+  const axiosSecure = useAxiosSecure();
+  const [selectedId , setSelectedId] = useState('')
+
+  const { data: anounceData = [], refatch } = useQuery({
+    queryKey: ["anouncementData"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/annData");
+      return res.data;
+    },
+  });
+  console.log(anounceData,"announcementdata");
+
+  return (
+    <div>
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Email</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* row 1 */}
+            {anounceData?.map((l, i) => (
+              <tr key={l?._id} className="hover">
+                <th>{i + 1}</th>
+                <td>{l.email}</td>
+                <td>
+                  {/* Open the modal using document.getElementById('ID').showModal() method */}
+                  <button
+                  
+                    className="btn"
+                    onClick={() => {
+                        setSelectedId(l?.text)
+                        document.getElementById("my_modal_5").showModal()
+                    }
+                      
+                    }
+                  >
+                    Details
+                  </button>
+                  <dialog
+                    id="my_modal_5"
+                    className="modal modal-bottom sm:modal-middle"
+                  >
+                    <div className="modal-box">
+                        <h1>Detail Data : </h1>
+                      <h3 className="font-bold text-lg">{
+                            selectedId
+                        }</h3>
+                      <p className="py-4">
+                        
+                      </p>
+                      <div className="modal-action">
+                        <form method="dialog">
+                          {/* if there is a button in form, it will close the modal */}
+                          <button className="btn">Close</button>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
+                </td>
+
+                <td>
+                  <button className="btn btn-outline">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default AllAnn;

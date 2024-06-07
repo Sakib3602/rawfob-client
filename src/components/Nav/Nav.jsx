@@ -6,9 +6,27 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Badge } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../AuthHere/AuthProvider";
+import useAxiosSecure from "../../../useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 const Nav = () => {
   const {logout,person} = useContext(AuthContext)
-  console.log(person.photoUrl)
+  // console.log(person.photoURL,"url")
+
+
+  
+  const axiosSecure = useAxiosSecure()
+  
+
+
+  const {data: totalAll = []} = useQuery({
+    queryKey : ["userTotalData",],
+    queryFn : async()=>{
+      const res = await axiosSecure.get('/admin-stats')
+      return res.data;
+    }
+  })
+
+  console.log(totalAll.totalAnouncement)
 
   return (
     <div className="navbar bg-base-100">
@@ -64,7 +82,7 @@ const Nav = () => {
 
           <li className="text-[20px]">
             <Link to={"/"}>
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={totalAll?.totalAnouncement} color="primary">
                 <NotificationsIcon color="action" />
               </Badge>
             </Link>
@@ -76,7 +94,7 @@ const Nav = () => {
           <img
             className="rounded-full"
             alt="Tailwind CSS Navbar component"
-            src={person?.photoUrl ? person?.photoUrl : imageblack}
+            src={person?.photoURL ? person?.photoURL : imageblack}
           />
         </div>
         <Tooltip anchorSelect="#clickable" clickable>

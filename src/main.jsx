@@ -21,6 +21,9 @@ import AddPost from "./components/Dashbord/UserProfile/AddPost";
 import PrivateRoute from "./components/AuthHere/PrivateRoute";
 import Comments from "./components/Dashbord/UserProfile/Comments";
 import AdminProfile from "./components/Dashbord/Admin/AdminProfile";
+import Announcement from "./components/Dashbord/Admin/Announcement";
+import AllAnn from "./components/Dashbord/Admin/AllAnn";
+import Report from "./components/Dashbord/Admin/Report";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -72,6 +75,18 @@ const router = createBrowserRouter([
       {
         path : 'admin',
         element: <AdminProfile></AdminProfile>
+      },
+      {
+        path : 'ann',
+        element: <Announcement></Announcement>
+      },
+      {
+        path : 'allann',
+        element: <AllAnn></AllAnn>
+      },
+      {
+        path : 'report',
+        element: <Report></Report>
       },
     ]
   }
