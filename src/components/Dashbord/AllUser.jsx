@@ -1,29 +1,56 @@
 // import UserDataRole from "../Hooks/UserDataRole";
 
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../useAxiosSecure";
 import imageBlack from '../../assets/blackandwhite.png'
 import Loader from "../Loader";
+import toast from "react-hot-toast";
+
+import UserDataRole from "../Hooks/UserDataRole";
 
 const AllUser = () => {
-    // const {data,isLoading} = UserDataRole()
+    const [data,isLoading] = UserDataRole()
+    console.log(data,"data")
     const axiosSecure = useAxiosSecure()
 
-     const {data: allUser=[], isLoading} = useQuery({
+     const {data: allUser=[], isLoading : load} = useQuery({
         queryKey: ['userdataForadmin'],
         queryFn: async()=>{
             const res = await axiosSecure.get("/allUserData",{
-                headers : {
-                    authorization : `Bearar ${localStorage.getItem("accessToken")}`
-                }
+                
             })
             return res.data
         }
      })
      console.log(allUser,"all user data")
 
+     function handleAdmin(id){
+        console.log(id)
+        mutationUp.mutate(id)
 
-     if(isLoading){
+     }
+
+
+     const mutationUp = useMutation({
+        mutationFn : async(id)=>{
+            const res = await axiosSecure.patch(`/allUserData/${id}`,)
+            console.log(res.data)
+            return res.data;
+        },
+        onSuccess: ()=>{
+            toast.success("Admin Done.")
+        }
+     })
+
+
+
+
+
+
+
+
+
+     if(load){
         return <Loader></Loader>
      }
 
@@ -72,7 +99,11 @@ const AllUser = () => {
                     </td>
                     
                     <th>
-                      <button className="btn bg-red-500 text-white btn-xs">Make Admin</button>
+                        {
+                            all?.role === "admin" ? <button  className="btn bg-blue-500 text-white btn-xs">Admin</button> : <button onClick={()=>handleAdmin(all?._id)} className="btn bg-red-500 text-white btn-xs">Make Admin</button>
+                        }
+                    
+                      
                     </th>
                   </tr>)
             }

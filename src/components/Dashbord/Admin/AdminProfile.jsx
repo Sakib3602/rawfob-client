@@ -11,7 +11,7 @@ const AdminProfile = () => {
   const { person } = useContext(AuthContext);
   const [data, isLoading] = UserDataRole();
   const axiosSecure = useAxiosSecure()
-  console.log(data);
+  // console.log(data);
 
 
   const {data: totalAll = []} = useQuery({
