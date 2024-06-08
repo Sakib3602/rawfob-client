@@ -96,7 +96,7 @@ const AddPost = () => {
             <span className="p-2 font-[600]">Photo Url</span>
             <input
               placeholder="Photo Link"
-              defaultValue={person?.displayName || ""}
+             value={person?.photoURL}
               className="border focus:text-white  rounded-md p-2 mb-4 focus:bg-[#1976D2] focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
               type="text"
               name="Image"
