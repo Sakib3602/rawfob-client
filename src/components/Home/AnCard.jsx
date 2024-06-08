@@ -20,7 +20,7 @@ const AnCard = ({an}) => {
               />
             </div>
             <div>
-              <h4 className="font-bold text-black">{person?.displayName}</h4>
+              <h4 className="font-bold text-black">{an?.name}</h4>
               <span className="text-xs text-gray-400">{an?.time}</span>
             </div>
           </div>

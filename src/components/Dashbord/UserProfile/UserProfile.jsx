@@ -9,18 +9,7 @@ import AdminProfile from "../Admin/AdminProfile";
 
 const UserProfile = () => {
   const { person } = useContext(AuthContext);
-//   const axiosPublic = useAxiosPublic();
 
-//   console.log(person.email, "person");
-
-//   const { data } = useQuery({
-//     queryKey: ["userSingleData", person?.email],
-//     queryFn: async () => {
-//       const res = await axiosPublic.get(`/userData/${person?.email}`);
-//       return res.data;
-//     },
-//   });
-//   console.log(data, "sinle data");
 
 const [data,isLoading] = UserDataRole()
 console.log(data, "sinle data");
@@ -31,7 +20,7 @@ if(isLoading){
 	return <p className="text-[50px]">LOading</p>
 }
 
-if(data.role === 'admin'){
+if(data?.role === 'admin'){
   return <AdminProfile></AdminProfile>
 }
   return (

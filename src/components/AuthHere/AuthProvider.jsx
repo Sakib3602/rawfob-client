@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 
 import { GoogleAuthProvider } from "firebase/auth";
+import useAxiosPublic from "../../useAxiosPublic";
 
 const provider = new GoogleAuthProvider();
 
@@ -18,6 +19,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [person,setPerson] = useState('')
   const [loading,setLoading] = useState(true)
+  const axiosPublic = useAxiosPublic()
  
 
   const emailPassword = (email, password) => {
@@ -54,11 +56,21 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const DeleteIt = onAuthStateChanged(auth, (user) => {
       if (user) {
-        
-        console.log("on auth", user);
+
+        const userInfo = {email : user.email}
+        axiosPublic.post("/jwt", userInfo)
+        .then((res)=>{
+          if(res.data.token){
+            localStorage.setItem('accessToken',res.data.token)
+          }
+
+        })
         setPerson(user)
-      }
       setLoading(false)
+      }else{
+        localStorage.removeItem('accessToken')
+      }
+      
     });
 
     return () => {

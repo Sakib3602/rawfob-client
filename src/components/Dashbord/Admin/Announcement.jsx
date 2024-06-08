@@ -15,12 +15,13 @@ const Announcement = () => {
     function handleAnn(e){
         e.preventDefault()
         const email = person.email;
+        const name = person.displayName;
         const image = person.photoURL;
         const text = e.target.text.value;
         const time = moment().format('MMMM Do, h:mm a');
 
         const announceData = {
-            email,image,text,time
+            email,image,text,time,name
         }
 
 

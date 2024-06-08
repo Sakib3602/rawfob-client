@@ -123,6 +123,17 @@ const MainDashbord = () => {
                   ) : (
                     ""
                   )}
+                   {data?.role === "admin" ? (
+                <li>
+                  <Link to={"allUser"}>
+                    <a className="text-[25px] uppercase  font-[500]">
+                      All Users
+                    </a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
 
                   <div className="divider">OR</div>
                   <li>
@@ -130,8 +141,6 @@ const MainDashbord = () => {
                       <a className="text-[25px]  font-[500]">Home</a>
                     </Link>
                   </li>
-                 
-                 
                 </ul>
               </div>
             </div>
@@ -145,21 +154,95 @@ const MainDashbord = () => {
             ></label>
             <ul className="menu p-4 w-80 min-h-screen bg-base-200">
               {/* Sidebar content here */}
-              <li>
-                <Link to={"userProfile"}>
-                  <a className="text-[25px]  font-[500]">My Profile</a>
-                </Link>
-              </li>
-              <li>
-                <Link to={"addPosts"}>
-                  <a className="text-[25px]  font-[500]">Add Posts</a>
-                </Link>
-              </li>
-              <li>
-                <Link to={"myPosts"}>
-                  <a className="text-[25px]  font-[500]">My Posts</a>
-                </Link>
-              </li>
+              {data?.role === "guest" ? (
+                <li>
+                  <Link to={""}>
+                    <a className="text-[25px] uppercase  font-[500]">
+                      My Profile
+                    </a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+              {data?.role === "admin" ? (
+                <li>
+                  <Link to={"admin"}>
+                    <a className="text-[25px] uppercase  font-[500]">
+                      Admin Profile
+                    </a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+
+              {data?.role === "guest" ? (
+                <li>
+                  <Link to={"addPosts"}>
+                    <a className="text-[25px] uppercase  font-[500]">
+                      Add Posts
+                    </a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+              {data?.role === "admin" ? (
+                <li>
+                  <Link to={"ann"}>
+                    <a className="text-[25px] uppercase  font-[500]">
+                      Make Announcement
+                    </a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+              {data?.role === "guest" ? (
+                <li>
+                  <Link to={"myPosts"}>
+                    <a className="text-[25px] uppercase  font-[500]">
+                      My Posts
+                    </a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+              {data?.role === "admin" ? (
+                <li>
+                  <Link to={"allann"}>
+                    <a className="text-[25px] uppercase  font-[500]">
+                      All Announcement
+                    </a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+
+              {data?.role === "admin" ? (
+                <li>
+                  <Link to={"allUser"}>
+                    <a className="text-[25px] uppercase  font-[500]">
+                      All Users
+                    </a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+              {data?.role === "admin" ? (
+                <li>
+                  <Link to={"report"}>
+                    <a className="text-[25px] uppercase  font-[500]">reports</a>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+
               <div className="divider">OR</div>
               <li>
                 <Link to={"/"}>
