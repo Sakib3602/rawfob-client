@@ -121,9 +121,12 @@ const Nav = () => {
           />
         </div>
         <Tooltip anchorSelect="#clickable" clickable>
-          <Link>
+          {
+            person && <Link>
             <button className="font-[600]">{person?.displayName }</button>
           </Link>
+          }
+          
           <br />
 
           {

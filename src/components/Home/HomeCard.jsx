@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import Loader from "../Loader";
 
 
 
@@ -14,10 +15,10 @@ const HomeCard = ({postsData,isLoading,handleSortPopularity,asc}) => {
             <hr className="w-[300px] m-auto border-[3px]"/>
 
             
-        <div><button onClick={handleSortPopularity} className="btn btn-wide">{asc ? 'asc': "dsc "} Popularity</button></div>
+        <div><button onClick={handleSortPopularity} className="hover:bg-[#1976D2] border-[#1976D2] border-[2px] text-[#1976D2] font-[400] hover:text-white p-3 bg-slate-00 shadow-xl rounded-xl">Sort By Popularity</button></div>
            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 md:p-20 lg:p-20 gap-5">
            {
-                isLoading && <p className="text-[100px] text-center">LOading</p>
+                isLoading && <div className=""><Loader></Loader></div>
             }
 
            {

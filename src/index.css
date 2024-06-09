@@ -119,12 +119,14 @@
 .loader {
   width: 112px;
   height: 112px;
+  
+  
 }
 
 .box1,
 .box2,
 .box3 {
-  border: 16px solid #fbf707;
+  border: 16px solid #121203;
   box-sizing: border-box;
   position: absolute;
   display: block;
