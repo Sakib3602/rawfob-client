@@ -13,7 +13,7 @@ const MainDashbord = () => {
       <div className="w-[15%] lg:w-[30%] h-[500px] fixed  lg:relative">
         <div className="drawer ">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content flex flex-col">
+          <div className="drawer-content z-10 flex flex-col">
             {/* Navbar */}
             <div className="w-full  lg:min-h-screen lg:bg-black text-black lg:text-white">
               <div className="flex-none lg:hidden ">

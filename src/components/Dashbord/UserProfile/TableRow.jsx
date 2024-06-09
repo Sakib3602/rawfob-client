@@ -1,14 +1,39 @@
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
+import useAxiosSecure from "../../../../useAxiosSecure";
 
 
 const TableRow = ({t}) => {
   const [opValue,setOpValue] = useState('')
+  const axiosSecure = useAxiosSecure()
   function handle(e){
     e.preventDefault()
     console.log(e.target.value)
     setOpValue(e.target.value);
 
   }
+
+  function handleReport(id){
+    console.log(id)
+    mutationUp.mutate(id)
+  }
+
+  const mutationUp = useMutation({
+    mutationFn : async(id)=>{
+      const res = await axiosSecure.patch(`/commentsFeedback/${id}`,{opValue})
+      return res.send;
+    }
+  })
+
+
+ 
+
+
+
+
+
+
+
     return (
         <tr key={t?._id}>
         
@@ -34,7 +59,7 @@ const TableRow = ({t}) => {
             <option  >
               FeedBack
             </option>
-            <option value={"GOOD"}>GOOD</option>
+            <option value={"HATEFULL"}>HATEFULL</option>
             <option value={"BULLING"}>BULLING</option>
             <option value={"HARASMENT"}>HARASMENT</option>
            
@@ -42,7 +67,7 @@ const TableRow = ({t}) => {
           </form>
         </td>
         <td>
-          <button disabled={opValue === '' || opValue === "FeedBack"} className="btn btn-sm bg-[#1976D2] text-white hover:bg-orange-400">
+          <button onClick={()=>handleReport(t?._id)} disabled={opValue === '' || opValue === "FeedBack"} className="btn btn-sm bg-[#1976D2] text-white hover:bg-orange-400">
            Report
           </button>
         </td>

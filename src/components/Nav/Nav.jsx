@@ -21,7 +21,7 @@ const Nav = () => {
   function handleLogout(){
     logout()
     .then(()=>{
-      toast.success("log Out Done.")
+    toast.success("loged Out." )
       navigate('/')
     })
   }
@@ -125,9 +125,18 @@ const Nav = () => {
             <button className="font-[600]">{person?.displayName }</button>
           </Link>
           <br />
-          <Link to={"dashbord"}>
+
+          {
+            !person && <Link to={"/login"}>
+            <button className="mt-2">Log IN</button>
+          </Link>
+          }
+          {
+            person && <Link to={"dashbord"}>
             <button className="mt-2">DashBord</button>
           </Link>
+          }
+          
           <br />
           {
             person ? <Link>
