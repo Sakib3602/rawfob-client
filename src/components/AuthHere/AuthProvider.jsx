@@ -69,6 +69,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false)
       }else{
         localStorage.removeItem('accessToken')
+        setPerson('')
       }
       
     });

@@ -1,10 +1,18 @@
+import { useState } from "react";
 
 
-const TableRow = ({opValue,handle,t}) => {
+const TableRow = ({t}) => {
+  const [opValue,setOpValue] = useState('')
+  function handle(e){
+    e.preventDefault()
+    console.log(e.target.value)
+    setOpValue(e.target.value);
+
+  }
     return (
-        <tr key={t._id}>
-        <th>1</th>
-        <td className="text-[16px]">{t.email}</td>
+        <tr key={t?._id}>
+        
+        <td className="text-[16px]">{t?.email}</td>
         <td className="text-[16px]">
           {t.comment.slice(0, 20)}
           {t.comment.length > 20 ? (

@@ -18,14 +18,8 @@ const Comments = () => {
     },
   });
   console.log(dataa, "comment data");
-  const [opValue,setOpValue] = useState('')
-  function handle(e){
-    e.preventDefault()
-    console.log(e.target.value)
-    setOpValue(e.target.value);
 
-  }
-  console.log(opValue)
+
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -38,18 +32,18 @@ const Comments = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+            
               <th>Name</th>
-              <th>Job</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Comment</th>
+              <th>FeedBack</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
 
             {dataa.map((t) => (
-             <TableRow key={t?._id} opValue={opValue} handle={handle} t={t}></TableRow>
+             <TableRow key={t?._id}  t={t}></TableRow>
             ))}
           </tbody>
         </table>

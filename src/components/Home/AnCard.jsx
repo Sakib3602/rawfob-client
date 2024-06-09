@@ -27,7 +27,7 @@ const AnCard = ({an}) => {
           
         </div>
         <div className="p-4 space-y-2 text-sm text-gray-400">
-          <p>
+          <p className="flex-1">
            {an?.text}
           </p>
           

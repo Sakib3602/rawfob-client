@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import imageblack from '../../assets/blackandwhite.png'
 
@@ -8,13 +8,23 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthHere/AuthProvider";
 import useAxiosSecure from "../../../useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import toast, { Toaster } from "react-hot-toast";
 const Nav = () => {
   const {logout,person} = useContext(AuthContext)
   // console.log(person.photoURL,"url")
+  const navigate = useNavigate()
 
 
   
   const axiosSecure = useAxiosSecure()
+
+  function handleLogout(){
+    logout()
+    .then(()=>{
+      toast.success("log Out Done.")
+      navigate('/')
+    })
+  }
   
 
 
@@ -30,6 +40,7 @@ const Nav = () => {
 
   return (
     <div className="navbar bg-base-100">
+      <Toaster></Toaster>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,7 +72,7 @@ const Nav = () => {
          {
           !person ?  <li className="text-xl font-[600]">
           <Link to={"/login"}>Join Us</Link>
-        </li> : ''
+        </li> : ' '
          }
 
           <li className="text-[20px]">
@@ -120,7 +131,7 @@ const Nav = () => {
           <br />
           {
             person ? <Link>
-            <button className="mt-2" onClick={logout}>Log Out</button>
+            <button className="mt-2" onClick={handleLogout}>Log Out</button>
           </Link> : ''
           }
         </Tooltip>

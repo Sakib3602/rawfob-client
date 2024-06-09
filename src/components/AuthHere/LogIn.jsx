@@ -27,8 +27,8 @@ const LogIn = () => {
       emailPasswordSignUp(data.email,data.password)
       .then(()=>{
      
-        navigate('/')
         toast.success("Log In Successfully !")
+        navigate('/')
 
       })
   
@@ -42,6 +42,7 @@ const LogIn = () => {
 
     // 
     function handleGoogle(){
+      toast.success("Log In Successfully !")
       googleText()
       .then((result)=>{
         console.log("result" , result.user.email)
@@ -54,6 +55,7 @@ const LogIn = () => {
 
 
         }
+      
         mutationUp.mutate(userPostDataForDb)
 
       })
@@ -67,8 +69,8 @@ const LogIn = () => {
     const mutationUp = useMutation({
       mutationFn : gg,
       onSuccess: ()=>{
-        navigate('/')
         toast.success("Log In Successfully !")
+        navigate('/')
       }
     })
 
