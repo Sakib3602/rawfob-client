@@ -4,6 +4,7 @@ import HomeCard from "./HomeCard";
 import SearchBox from "./SearchBox";
 import { useQuery } from "@tanstack/react-query";
 import Announcement from "./Announcement";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
@@ -83,6 +84,11 @@ const Home = () => {
         postsData={postsData}
         isLoading={isLoading}
       ></HomeCard>
+       <Helmet>
+               
+                <title>Home || RAWFOB</title>
+                
+            </Helmet>
       <h1 className="text-center">current page {currentPage + 1}</h1>
       <div className="flex items-center justify-center">
         <h1

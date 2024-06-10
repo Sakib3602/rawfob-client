@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import UserDataRole from "../Hooks/UserDataRole";
+import { Helmet } from "react-helmet";
 
 const MainDashbord = () => {
   const [data, isloading] = UserDataRole();
@@ -17,6 +18,11 @@ const MainDashbord = () => {
             {/* Navbar */}
             <div className="w-full  lg:min-h-screen lg:bg-black text-black lg:text-white">
               <div className="flex-none lg:hidden ">
+              <Helmet>
+                
+                <title>RawFow | DashBord !</title>
+                <link rel="canonical" href="../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
                 <label
                   htmlFor="my-drawer-3"
                   aria-label="open sidebar"

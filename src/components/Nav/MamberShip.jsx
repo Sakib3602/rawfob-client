@@ -2,6 +2,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import imgFLop from "../../assets/clay-banks-tgquMvhNLc4-unsplash.jpg";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "../Money/CheckOutForm";
+import { Helmet } from "react-helmet";
 
 
 const stripePromise = loadStripe('pk_test_51PLpbn17Gzb8sheAfbF9vtXfQ1OCuj6LxsBlLfmKBAdBDxLev44wfLKE4S2toLV7IIzQoOb0Z0MXv0GELkM2KzQ500sWhXPIe1');
@@ -18,6 +19,11 @@ const MamberShip = () => {
               Choose your best plan
             </h2>
           </div>
+          <Helmet>
+               
+               <title> RAWFOB || MamberShip............. </title>
+               
+           </Helmet>
           <div className="flex flex-wrap items-stretch ">
             <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
               <div className="flex flex-grow flex-col p-6 space-y-6 rounded shadow sm:p-8 dark:bg-gray-50">

@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../useAxiosSecure";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const AllAnn = () => {
   // const [data, isloading] = UserDataRole();
@@ -68,6 +69,11 @@ const AllAnn = () => {
                   >
                     Details
                   </button>
+                  <Helmet>
+                
+                <title>Admin | All Announcement!</title>
+                <link rel="canonical" href="../../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
                   <dialog
                     id="my_modal_5"
                     className="modal modal-bottom sm:modal-middle"

@@ -6,6 +6,7 @@ import { AuthContext } from "./AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import useAxiosPublic from "../../useAxiosPublic";
 import { useMutation } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 const LogIn = () => {
   const axiosPublic = useAxiosPublic()
@@ -30,6 +31,9 @@ const LogIn = () => {
         toast.success("Log In Successfully !")
         navigate('/')
 
+      })
+      .catch((errors)=>{
+        toast.success(`Sorry ${errors.message} !`)
       })
   
       
@@ -82,6 +86,15 @@ const LogIn = () => {
     <h1 className="text-center text-[40px] font-[700]">Log In Here!</h1>
     <form onSubmit={handleSubmit(onSubmit)} className="form m-auto">
     <Toaster/>
+  
+               
+    <Helmet>
+                
+                <title>Log In !</title>
+                <link rel="canonical" href="../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
+               
+      
       <div className="flex-column">
         <label>Email </label>
       </div>

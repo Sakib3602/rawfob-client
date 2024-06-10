@@ -7,6 +7,7 @@ import { AuthContext } from "../AuthHere/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { FacebookIcon, FacebookShareButton, FacebookShareCount } from "react-share";
+import { Helmet } from "react-helmet";
 
 const HomeCardDetails = () => {
   const {
@@ -117,6 +118,11 @@ const HomeCardDetails = () => {
       <div className="hero lg:p-14  bg-base-200 mt-6 rounded-xl shadow-2xl border">
         <div className="hero-content flex-col lg:flex-row">
           <Toaster></Toaster>
+          <Helmet>
+               
+               <title> RAWFOB || Details </title>
+               
+           </Helmet>
           <img
             src={postsData?.author_image}
             className="md:h-[50%] lg:w-[25%] rounded-lg shadow-2xl"

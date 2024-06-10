@@ -7,6 +7,7 @@ import Loader from "../Loader";
 import toast from "react-hot-toast";
 
 import UserDataRole from "../Hooks/UserDataRole";
+import { Helmet } from "react-helmet";
 
 const AllUser = () => {
     const [data,isLoading] = UserDataRole()
@@ -105,7 +106,11 @@ const AllUser = () => {
                     
                       
                     </th>
-                    
+                    <Helmet>
+                
+                <title>Admin | All User!</title>
+                <link rel="canonical" href="../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
                     <th>
                         {
                             all?.role === "admin" ? <button  className="btn bg-blue-500 text-white btn-xs">Admin</button> : <button onClick={()=>handleAdmin(all?._id)} className="btn bg-red-500 text-white btn-xs">Make Admin</button>

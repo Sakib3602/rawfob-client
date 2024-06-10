@@ -5,6 +5,7 @@ import moment from "moment/moment";
 import useAxiosSecure from "../../../../useAxiosSecure";
 import { useMutation } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Announcement = () => {
     const {person} = useContext(AuthContext)
@@ -66,6 +67,11 @@ const Announcement = () => {
               and new product launches.
             </p>
           </div>
+          <Helmet>
+                
+                <title>Admin | Announcement!</title>
+                <link rel="canonical" href="../../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
               <div className="max-w-md mx-auto relative overflow-hidden z-10 bg-gray-800 p-8 rounded-lg shadow-md before:w-24 before:h-24 before:absolute before:bg-purple-600 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-sky-400 after:rounded-full after:-z-10 after:blur-xl after:top-24 after:-right-12">

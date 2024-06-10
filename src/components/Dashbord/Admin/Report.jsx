@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../../useAxiosSecure";
 import { useState } from "react";
 import Loader from "../../Loader";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Report = () => {
   const axiosSecure = useAxiosSecure();
@@ -49,6 +50,11 @@ const mutationCmt = useMutation({
         ALL REPORTED COMMENTS.
       </h1>
       <hr />
+      <Helmet>
+                
+                <title>Admin | All Reports!</title>
+                <link rel="canonical" href="../../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

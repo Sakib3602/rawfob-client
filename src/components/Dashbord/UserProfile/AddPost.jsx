@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import useAxiosPublic from "../../../useAxiosPublic";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AddPost = () => {
   const { person } = useContext(AuthContext);
@@ -81,6 +82,11 @@ const AddPost = () => {
               required
             />
              <Toaster />
+             <Helmet>
+                
+                <title>RawFob || Add Posts !</title>
+                <link rel="canonical" href="../../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
             <span className="p-2 font-[600]">Post Title</span>
             <input
               placeholder="Post Title"

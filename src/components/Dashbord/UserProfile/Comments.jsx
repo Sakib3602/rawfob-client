@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../useAxiosPublic";
 import Loader from "../../Loader";
 import { useState } from "react";
 import TableRow from "./TableRow";
+import { Helmet } from "react-helmet";
 
 const Comments = () => {
   const params = useParams();
@@ -32,6 +33,11 @@ const Comments = () => {
           {/* head */}
           <thead>
             <tr>
+            <Helmet>
+                
+                <title>RawFob || Comments !</title>
+                <link rel="canonical" href="../../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
             
               <th>Name</th>
               <th>Comment</th>

@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import Loader from "../../Loader";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const MyPosts = () => {
   const { person } = useContext(AuthContext);
@@ -70,6 +71,11 @@ function handleDelete(id){
               <th>Delete</th>
             </tr>
           </thead>
+          <Helmet>
+                
+                <title>RawFob || My Posts !</title>
+                <link rel="canonical" href="../../../assets/kisspng-logo-portable-network-graphics-image-brand-r-png-sorgusuna-uygun-resimleri-bedava-indir-5d0027f9775ea4.2689206515602913214889.jpg" />
+            </Helmet>
           <tbody>
             {/* row 1 */}
 
