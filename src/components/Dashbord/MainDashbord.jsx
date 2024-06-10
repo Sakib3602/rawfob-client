@@ -14,7 +14,7 @@ const MainDashbord = () => {
       <div className="w-[15%] lg:w-[30%] h-[500px] fixed  lg:relative">
         <div className="drawer ">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content z-10 flex flex-col">
+          <div className="drawer-content z-10 flex  flex-col">
             {/* Navbar */}
             <div className="w-full  lg:min-h-screen lg:bg-black text-black lg:text-white">
               <div className="flex-none lg:hidden ">
@@ -26,8 +26,9 @@ const MainDashbord = () => {
                 <label
                   htmlFor="my-drawer-3"
                   aria-label="open sidebar"
-                  className="btn btn-square btn-ghost"
+                  className="btn btn-square flex flex-row w-full btn-ghost"
                 >
+                  <h1 className="text-[30px] font-[700]">RAWFOB</h1>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -41,6 +42,7 @@ const MainDashbord = () => {
                       d="M4 6h16M4 12h16M4 18h16"
                     ></path>
                   </svg>
+                  
                 </label>
               </div>
               {/* <div className="flex-1 px-2 mx-2">Navbar Title</div> */}
@@ -152,13 +154,14 @@ const MainDashbord = () => {
             </div>
             {/* Page content here */}
           </div>
-          <div className="drawer-side">
+          <div className="drawer-side ">
             <label
               htmlFor="my-drawer-3"
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu p-4 w-80 min-h-screen bg-base-200">
+            {/*  */}
+            <ul className="menu bg-base-200 p-4 w-80 min-h-screen ">
               {/* Sidebar content here */}
               {data?.role === "guest" ? (
                 <li>
