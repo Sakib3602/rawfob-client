@@ -66,7 +66,8 @@ const AllUser = () => {
               <th>
                Name
               </th>
-              <th>email</th>
+              <th>Email</th>
+              <th>MamberShip</th>
               <th></th>
           
             </tr>
@@ -97,6 +98,13 @@ const AllUser = () => {
                      {all?.email}
                       
                     </td>
+
+                    <th className="uppercase">
+                       {all?.role === 'guest' && "Bronze" }
+                       {/* {all?.role === '' && "Bronze" } */}
+                    
+                      
+                    </th>
                     
                     <th>
                         {
@@ -105,6 +113,7 @@ const AllUser = () => {
                     
                       
                     </th>
+                   
                   </tr>)
             }
 

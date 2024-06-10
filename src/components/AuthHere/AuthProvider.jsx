@@ -17,7 +17,7 @@ const provider = new GoogleAuthProvider();
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [person,setPerson] = useState('')
+  const [person,setPerson] = useState(null)
   const [loading,setLoading] = useState(true)
   const axiosPublic = useAxiosPublic()
  

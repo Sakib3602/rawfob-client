@@ -7,6 +7,8 @@ import Loader from "../Loader";
 const HomeCard = ({postsData,isLoading,handleSortPopularity,asc}) => {
     
 
+    console.log(postsData)
+
 
     return (
         <div className="mt-5">
@@ -41,6 +43,10 @@ const HomeCard = ({postsData,isLoading,handleSortPopularity,asc}) => {
                         <span className="flex items-center space-x-2">
                             
                             <span className="text-gray-400 hover:text-white">Popularity : {x.popularity}</span>
+                        </span>
+                        <span className="flex items-center space-x-2">
+                            
+                            <span className="text-gray-400 hover:text-white">Time : {x.post_time}</span>
                         </span>
                     </div>
                 </div>
