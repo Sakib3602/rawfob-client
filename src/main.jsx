@@ -26,12 +26,14 @@ import AllAnn from "./components/Dashbord/Admin/AllAnn";
 import Report from "./components/Dashbord/Admin/Report";
 import MamberShip from "./components/Nav/MamberShip";
 import AllUser from "./components/Dashbord/AllUser";
+import Error from "./components/Error/Error";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -61,6 +63,7 @@ const router = createBrowserRouter([
       <MainDashbord></MainDashbord>
 
     </PrivateRoute> ,
+    errorElement : <Error></Error>,
     children : [
       {
         index: true,
