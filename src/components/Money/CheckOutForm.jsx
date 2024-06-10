@@ -86,6 +86,14 @@ const money = 24;
   else{
     toast.success(`Payment Done! Id : ${paymentIntent.id}`)
     console.log(paymentIntent.status)
+
+    
+
+
+
+
+
+
   }
 
 

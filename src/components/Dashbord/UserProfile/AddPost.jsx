@@ -19,6 +19,7 @@ const AddPost = () => {
     const post_description = e.target.des.value;
     const upvote = 0;
     const downvote = 0;
+    const author_image = e.target.Image.value
     const post_time = new Date();
     const dataForPost = {
       email,
@@ -26,6 +27,7 @@ const AddPost = () => {
       tag,
       post_description,
       author_name,
+      author_image,
       upvote,
       downvote,
       post_time,
@@ -90,7 +92,7 @@ const AddPost = () => {
             <span className="p-2 font-[600]">Name</span>
             <input
               placeholder="Your Name"
-              defaultValue={person?.displayName || ""}
+            value={person?.displayName || ""}
               className="border focus:text-white  rounded-md p-2 mb-4 focus:bg-[#1976D2] focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
               type="text"
               name="name"

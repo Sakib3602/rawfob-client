@@ -118,17 +118,17 @@ const HomeCardDetails = () => {
         <div className="hero-content flex-col lg:flex-row">
           <Toaster></Toaster>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            className="max-w-sm rounded-lg shadow-2xl"
+            src={postsData?.author_image}
+            className="md:h-[50%] lg:w-[25%] rounded-lg shadow-2xl"
           />
           <div>
             <h1 className="text-3xl lg:text-5xl font-bold">
               {postsData.post_title}
             </h1>
-            <p className="py-2">By - {postsData.author_name}</p>
-            <p className="py-2">Tag : #{postsData.tag}</p>
+            <p className="py-2">By - {postsData?.author_name}</p>
+            <p className="py-2">Tag : #{postsData?.tag}</p>
             <p className="py-2 text-[16px] lg:text-[20px]">
-              {postsData.post_description}
+              {postsData?.post_description}
             </p>
             <p className="py-2">
               Post Time : {new Date(postsData.post_time).toLocaleDateString()}

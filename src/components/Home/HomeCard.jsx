@@ -27,7 +27,7 @@ const HomeCard = ({postsData,isLoading,handleSortPopularity,asc}) => {
                 postsData?.map(x => <Link key={x._id} to={`/homeCardDetails/${x._id}`}>
                 <div  className="max-w-md hover:bg-[#1976D2]  rounded-xl hover:text-white p-8 sm:flex sm:space-x-6 border text-black">
                 <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
-                    <img src="https://source.unsplash.com/100x100/?portrait?1" alt="" className="object-cover object-center w-full h-full rounded bg-gray-500" />
+                    <img src={x?.author_image} alt="" className="object-cover object-center w-full h-full rounded bg-gray-500" />
                 </div>
                 <div className="flex flex-col space-y-4">
                     <div>
