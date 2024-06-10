@@ -3,7 +3,41 @@
 
 Live Link : https://rawfob.netlify.app/
 
+- admin email : messi@gmail.com
+- admin password : messi123
 
+------------------------
+
+
+
+
+# --Features--
+
+- User Authentication and Authorization
+
+- Real-time Data Updates
+
+- Advanced Search and Filtering
+
+- Pagination and Infinite Scroll
+
+- Data Visualization and Charts
+
+- Responsive Design
+
+- Server-Side Rendering (SSR)
+
+- Push Notifications
+
+- Error Handling and Logging
+
+- State Management with Context API or Redux
+
+- Stripe Payment Integration
+
+- Sorting of Data
+
+# --Describe Section--
 
 - Real-time Database with Firebase Realtime Database or Firestore:
 
