@@ -3,8 +3,8 @@
 
 Live Link : https://rawfob.netlify.app/
 
--  email : messi@gmail.com
--  password : messi123
+-   : messi@gmail.com
+-  : messi123
 
 ------------------------
 
