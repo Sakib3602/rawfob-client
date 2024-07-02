@@ -62,3 +62,20 @@ Utilize MongoDB as your primary database for storing and querying structured dat
 
 
 
+## Installation
+
+Install my-project with npm
+
+```bash
+  git clone https://github.com/Sakib3602/rawfob-client.git
+  cd rawfob-client
+
+```
+Now Install -
+```bash
+  npm install
+
+
+```
+
+
